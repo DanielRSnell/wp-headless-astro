@@ -1,7 +1,7 @@
 ---
 import Header from "@/components/Header/index.svelte";
-import { getMenuBySlug } from "@/pages/api/menus";
-import Logo from '@/images/logo.svg';
+import { getMenuBySlug } from "@/pages/api/core/menus";
+import Logo from "@/images/logo.svg";
 const { classNames } = Astro.props;
 
 // This should be brought in via CMS Config Settings
@@ -10,9 +10,9 @@ let args = {
   logo: Logo,
   action: {
     label: "Get Started",
-    url: "/get-started"
+    url: "/get-started",
   },
-  title: 'WP Astro'
+  title: "WP Astro",
 };
 
 // Fetch Primary Menu by Slug
@@ -20,8 +20,9 @@ let config = await getMenuBySlug(args);
 ---
 
 <body>
-  <Header menu={config} args={args}/>
-  <main class={classNames}>
-  <slot />
+  <Header menu={config} args={args} />
+  <main class={classNames} transition:animate="initial">
+    <slot />
   </main>
 </body>
+@/pages/api/core/menus

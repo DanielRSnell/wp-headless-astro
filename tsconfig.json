@@ -9,7 +9,7 @@
       "@wrappers/*": ["src/layouts/parts/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
-      "@api/*": ["src/pages/api/*"],
+      "@api/*": ["src/pages/api/timber/*"], // This is new modified theme version, done.
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"]
     }

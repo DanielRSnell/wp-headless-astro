@@ -1,0 +1,8 @@
+---
+const { content, title, slug, id } = Astro.props;
+---
+
+<article class="prose prose-2xl" transition:name={id + "-article"}>
+  <h1 transition:name={"h1-" + id}>{title.rendered}</h1>
+  <Fragment set:html={content.rendered} />
+</article>

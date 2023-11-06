@@ -1,8 +1,9 @@
 ---
 import Metadata from "@/layouts/boilerplate.astro";
 import Wrapper from "@/layouts/parts/astro_body.astro";
-import { getPosts } from "@api/posts";
+import { getPosts } from "@/pages/api/core/posts";
 import Archive from "@components/Archive/index.astro";
+import { getPostById } from "@api/posts";
 import { z } from "zod";
 import { ValidManyQuery } from "@/hooks/ValidManyQuery"; // Adjust the import path to match your project structure
 
@@ -13,7 +14,7 @@ let args = {
     per_page: 3,
     page: 1,
   },
-  _fields: "title, content, slug, featured_image",
+  _fields: "id, title, content, slug, featured_image",
 };
 
 // Use utility function to build and validate args
@@ -28,3 +29,4 @@ const data = await getPosts(validatedArgs);
 <Wrapper classNames="flex flex-col justify-center items-center gap-4">
   <Archive data={data} />
 </Wrapper>
+@/pages/api/core/posts

@@ -6,14 +6,14 @@
 </script>
 
 <section id={name}>
-  <header class="absolute top-0 flex w-full items-stretch justify-center">
+  <header class="absolute top-0 flex w-full items-stretch justify-center z-50">
     <div class="flex flex-row justify-between w-full max-w-7xl py-4">
       <div
         class="relative flex gap-2 justify-center items-center text-lg text-black/40 uppercase"
       >
         <a
           href="/"
-          class="flex w-full h-full no-underline flex flex-row gap-1 justify-center items-center"
+          class="flex w-full h-full no-underline flex-row gap-1 justify-center items-center"
         >
           <img src={logo.src} alt={title} />
           {title}

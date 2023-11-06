@@ -2,9 +2,9 @@
 // Imports
 import Layout from "@layouts/boilerplate.astro";
 import Wrapper from "@/layouts/parts/astro_body.astro";
-import Content from "@components/Post/content.svelte";
+import Content from "@/components/Post/content.astro";
 // REST API BASICS
-import { getPostById } from "@api/posts";
+import { getPostById } from "@/pages/api/core/posts";
 
 const params = {
   extension: "/wp/v2/posts",
@@ -13,16 +13,17 @@ const params = {
 
 const { content } = await getPostById(params);
 ---
-<!-- 
-<Layout title="Home" /> -->
+
+<Layout title="Home" />
 
 <Wrapper classNames="flex flex-col w-ful justify-center items-stretch">
   <section>
     <div
       class="flex flex-col w-full h-screen items-stretch justify-center text-center"
     >
-      <h1 class="text-7xl font-bold">Home</h1>
+      <h1 transition:name="page-header" class="text-7xl font-bold">Home</h1>
       <p class="text-lg">This is some sample header content.</p>
     </div>
   </section>
 </Wrapper>
+@/pages/api/core/posts

@@ -1,22 +1,19 @@
 ---
 const { pathname } = Astro.url;
-const { title, excerpt, action } = Astro.props;
+const { title, excerpt, action, id } = Astro.props;
 ---
 
 <article
-  class="p-4 rounded-2xl shadow-md flex flex-col justify-between py-8 gap-4"
+  class="relative p-4 rounded-2xl border-2 border-solid border-gray-100 hover:shadow-2xl shadow-gray-300/20 duration-1000 flex flex-col justify-between py-8 gap-4"
 >
-  <header>
-    <h1 class="text-2xl font-semibold line-clamp-2">{title}</h1>
-  </header>
+  <h1 
+  transition:name={"h1-" + id} 
+  class="text-2xl font-semibold line-clamp-2">
+    {title}
+  </h1>
   <p set:html={excerpt} />
-  <footer>
-    <div class="flex gap-2">
-      <a
-        href={pathname + "/" + action}
-        class="px-4 py-2 text-sm border-[0.1em] border-solid border-gray-300"
-        >Read More</a
-      >
-    </div>
-  </footer>
+  <a
+    href={pathname + "/" + action}
+    class="absolute top-0 no-underline w-full h-full first-letter:px-4 py-2 text-sm border-solid border-gray-300"
+  ></a>
 </article>

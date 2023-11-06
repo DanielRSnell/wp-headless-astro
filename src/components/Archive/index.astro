@@ -1,38 +1,46 @@
 ---
 import ArchiveCard from "./Card.astro";
+import Header from "./header.astro";
 const { data } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 py-12 max-w-7xl mx-auto"
->
-  {
-    data.map((post, index) => {
-      // Check Keys
-      // console.log(Object.keys(post));
+<div class="pt-12 md:pt-24 lg:pt-48">
+  <Header />
+  <section>
+    <div
+      class="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 py-12 max-w-7xl mx-auto"
+    >
+      {
+        data.map((post, index) => {
+          // Check Keys
+          // console.log(Object.keys(post));
 
-      // Check Specific Key
-      // console.log(post.title.rendered);
+          // Check Specific Key
+          // console.log(post.title.rendered);
 
-      // Example of destructuring
-      const { title, content, featured_media, slug } = post;
+          // Example of destructuring
+          const { title, content, featured_media, slug, id } = post;
+          console.log(post);
 
-      // Example of chaining
-      const excerpt =
-        content.rendered
-          .replace(/(<([^>]+)>)/gi, "")
-          .split(" ")
-          .slice(0, 35)
-          .join(" ") + "...";
+          // Example of chaining
+          const excerpt =
+            content.rendered
+              .replace(/(<([^>]+)>)/gi, "")
+              .split(" ")
+              .slice(0, 35)
+              .join(" ") + "...";
 
-      return (
-        <ArchiveCard
-          key={index + "-post_type"}
-          title={title.rendered}
-          excerpt={excerpt}
-          action={slug}
-        />
-      );
-    })
-  }
+          return (
+            <ArchiveCard
+              key={index + "-post_type"}
+              title={title.rendered}
+              excerpt={excerpt}
+              action={slug}
+              id={id}
+            />
+          );
+        })
+      }
+    </div>
+  </section>
 </div>
