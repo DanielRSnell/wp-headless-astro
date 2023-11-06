@@ -1,0 +1,25 @@
+---
+import Boilerplate from "@/layouts/boilerplate.astro";
+import Wrapper from "@/layouts/parts/astro_body.astro";
+import Content from "@/components/Post/content.svelte";
+import { getPostBySlug } from "@api/posts";
+
+const { pathname } = Astro.url;
+
+const { slug } = Astro.params;
+
+const args = {
+  extension: "/wp/v2/posts",
+  slug,
+};
+
+const data = await getPostBySlug(args);
+
+const { title, content } = data;
+---
+
+<Boilerplate title={title} />
+
+<Wrapper classNames={"flex flex-col justify-start items-center py-24"}>
+  <Content content={content} />
+</Wrapper>

@@ -1,0 +1,25 @@
+---
+// Every Astro File That has Server Side Processes Needs ---
+import Base from "@/layouts/parts/astro_body.astro";
+import "@styles/tailwind.scss";
+import AstroHeader from "./type/astro_header.astro";
+
+const { title } = Astro.props; // This will allow a specific page to pass meta data to the header
+---
+
+<!-- Create a typical HTML Boilerplate --><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? title : "Document"}</title>
+    <link
+      rel="stylesheet"
+      href="https://headless.local/wp-content/themes/ollie/assets/styles/core-navigation.css?ver=6.3.2"
+    />
+    <AstroHeader />
+    <!-- This will be augmented by the metadata we pass from WordPress  -->
+  </head>
+  <Base />
+
+</html>

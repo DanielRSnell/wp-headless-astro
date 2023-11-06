@@ -1,0 +1,30 @@
+---
+import Metadata from "@/layouts/boilerplate.astro";
+import Wrapper from "@/layouts/parts/astro_body.astro";
+import { getPosts } from "@api/posts";
+import Archive from "@components/Archive/index.astro";
+import { z } from "zod";
+import { ValidManyQuery } from "@/hooks/ValidManyQuery"; // Adjust the import path to match your project structure
+
+// Define Args
+let args = {
+  post_type: "/wp/v2/posts",
+  params: {
+    per_page: 3,
+    page: 1,
+  },
+  _fields: "title, content, slug, featured_image",
+};
+
+// Use utility function to build and validate args
+const validatedArgs = ValidManyQuery(args);
+
+// Now use validatedArgs to get the data
+const data = await getPosts(validatedArgs);
+---
+
+<Metadata title="Blog" />
+
+<Wrapper classNames="flex flex-col justify-center items-center gap-4">
+  <Archive data={data} />
+</Wrapper>
