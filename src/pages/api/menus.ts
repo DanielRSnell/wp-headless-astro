@@ -49,6 +49,8 @@ export async function getMenuBySlug(args: { slug: string }) {
   // Send an HTTP GET request to the constructed URL
   const response = await fetch(url);
 
+  console.log(response);
+
   // Parse the response body as JSON
   const menu = await response.json();
 

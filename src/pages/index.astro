@@ -2,16 +2,7 @@
 // Imports
 import Layout from "@layouts/boilerplate.astro";
 import Wrapper from "@/layouts/parts/astro_body.astro";
-import Content from "@/components/Post/content.astro";
-// REST API BASICS
-import { getPostById } from "@/pages/api/core/posts";
 
-const params = {
-  extension: "/wp/v2/posts",
-  id: 282,
-};
-
-const { content } = await getPostById(params);
 ---
 
 <Layout title="Home" />
@@ -26,4 +17,3 @@ const { content } = await getPostById(params);
     </div>
   </section>
 </Wrapper>
-@/pages/api/core/posts

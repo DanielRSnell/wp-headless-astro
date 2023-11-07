@@ -2,7 +2,7 @@
 import Boilerplate from "@/layouts/boilerplate.astro";
 import Wrapper from "@/layouts/parts/astro_body.astro";
 import Content from "@/components/Post/content.astro";
-import { getPostBySlug } from "@/pages/api/core/posts";
+import { getPostBySlug } from "@/pages/api/posts";
 
 const { pathname } = Astro.url;
 
@@ -29,4 +29,3 @@ const { id, title, content } = data;
     slug={slug}
   />
 </Wrapper>
-@/pages/api/core/posts

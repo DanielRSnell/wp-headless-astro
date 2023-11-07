@@ -1,0 +1,11 @@
+---
+
+const { pathname } = Astro.params;
+const endpoint = import.meta.env.CORE_URL;
+
+const request = await fetch(`${endpoint}/${pathname}`);
+const data = await request.text();
+
+---
+
+<Fragment set:html={data} />

@@ -1,6 +1,6 @@
 ---
 import Header from "@/components/Header/index.svelte";
-import { getMenuBySlug } from "@/pages/api/core/menus";
+import { getMenuBySlug } from "@/pages/api/menus";
 import Logo from "@/images/logo.svg";
 const { classNames } = Astro.props;
 
@@ -17,12 +17,12 @@ let args = {
 
 // Fetch Primary Menu by Slug
 let config = await getMenuBySlug(args);
+console.log(config);
 ---
 
 <body>
-  <Header menu={config} args={args} />
+ {config ? <Header menu={config} args={args} />: null }
   <main class={classNames} transition:animate="initial">
     <slot />
   </main>
 </body>
-@/pages/api/core/menus

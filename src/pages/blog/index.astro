@@ -1,7 +1,7 @@
 ---
 import Metadata from "@/layouts/boilerplate.astro";
 import Wrapper from "@/layouts/parts/astro_body.astro";
-import { getPosts } from "@/pages/api/core/posts";
+import { getPosts } from "@/pages/api/posts";
 import Archive from "@components/Archive/index.astro";
 import { getPostById } from "@api/posts";
 import { z } from "zod";
@@ -29,4 +29,3 @@ const data = await getPosts(validatedArgs);
 <Wrapper classNames="flex flex-col justify-center items-center gap-4">
   <Archive data={data} />
 </Wrapper>
-@/pages/api/core/posts
