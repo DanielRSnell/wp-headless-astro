@@ -11,7 +11,7 @@ const { data } = Astro.props;
       class="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 py-12 max-w-7xl mx-auto"
     >
       {
-        data.map((post, index) => {
+        data.map((post: any, index: any) => {
           // Check Keys
           // console.log(Object.keys(post));
 
