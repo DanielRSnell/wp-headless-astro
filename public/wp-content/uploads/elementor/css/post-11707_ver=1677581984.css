@@ -1,0 +1,48 @@
+.elementor-11707 .elementor-element.elementor-element-58b86da3{--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--justify-content:space-between;--gap:0px;--flex-wrap:nowrap;--overflow:hidden;--background-transition:0.3s;--border-radius:8px 8px 8px 8px;box-shadow:0px 24px 100px -8px rgba(0, 0, 0, 0.1);--padding-top:24px;--padding-right:24px;--padding-bottom:24px;--padding-left:24px;}.elementor-11707 .elementor-element.elementor-element-3d1b644f{--flex-direction:row;--container-widget-width:initial;--container-widget-height:100%;--container-widget-flex-grow:1;--container-widget-align-self:stretch;--justify-content:space-between;--gap:0px;--background-transition:0.3s;}.elementor-11707 .elementor-element.elementor-element-b794537{text-align:center;}.elementor-11707 .elementor-element.elementor-element-b794537 .elementor-heading-title{font-family:"Hind", Sans-serif;font-size:16px;font-weight:bold;line-height:1.7em;}.elementor-11707 .elementor-element.elementor-element-b794537 > .elementor-widget-container{margin:0px 0px 20px 0px;}.elementor-11707 .elementor-element.elementor-element-1835d294 .elementor-icon-wrapper{text-align:center;}.elementor-11707 .elementor-element.elementor-element-1835d294.elementor-view-framed .elementor-icon{background-color:#02010100;}.elementor-11707 .elementor-element.elementor-element-1835d294.elementor-view-stacked .elementor-icon{color:#02010100;}.elementor-11707 .elementor-element.elementor-element-1835d294.elementor-view-stacked .elementor-icon svg{fill:#02010100;}.elementor-11707 .elementor-element.elementor-element-1835d294 .elementor-icon{font-size:32px;padding:0px;border-width:1px 1px 1px 1px;border-radius:8px 8px 8px 8px;}.elementor-11707 .elementor-element.elementor-element-1835d294 > .elementor-widget-container{margin:-8px 0px 0px 0px;}.elementor-11707 .elementor-element.elementor-element-1835d294{z-index:9999;}.elementor-11707 .elementor-element.elementor-element-3479f3ed{--gap:0px;--background-transition:0.3s;}.elementor-11707 .elementor-element.elementor-element-f872797{--e-icon-list-icon-size:14px;}.elementor-11707 .elementor-element.elementor-element-f872797 .elementor-icon-list-item:hover .elementor-icon-list-text{color:var( --e-global-color-61948c5 );}.elementor-11707 .elementor-element.elementor-element-f872797 > .elementor-widget-container{margin:40px 0px 0px 0px;}#elementor-popup-modal-11707 .dialog-message{width:640px;height:380px;align-items:flex-start;}#elementor-popup-modal-11707{justify-content:center;align-items:center;}#elementor-popup-modal-11707 .dialog-widget-content{border-radius:8px 8px 8px 8px;box-shadow:2px 8px 23px 3px rgba(0,0,0,0.2);}@media(max-width:767px){.elementor-11707 .elementor-element.elementor-element-58b86da3{--flex-direction:column;--container-widget-width:calc( ( 1 - var( --container-widget-flex-grow ) ) * 100% );--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--justify-content:space-between;--align-items:center;--flex-wrap:wrap;--border-radius:8px 8px 8px 8px;--padding-top:20px;--padding-right:20px;--padding-bottom:20px;--padding-left:20px;}.elementor-11707 .elementor-element.elementor-element-58b86da3.e-con{--align-self:center;}.elementor-11707 .elementor-element.elementor-element-b794537 .elementor-heading-title{font-size:22px;line-height:1.8em;}.elementor-11707 .elementor-element.elementor-element-b794537 > .elementor-widget-container{margin:0px 0px 0px 0px;}.elementor-11707 .elementor-element.elementor-element-b794537.elementor-element{--align-self:center;}.elementor-11707 .elementor-element.elementor-element-1835d294 > .elementor-widget-container{margin:0px 0px -6px 0px;}.elementor-11707 .elementor-element.elementor-element-1835d294.elementor-element{--align-self:center;}.elementor-11707 .elementor-element.elementor-element-3479f3ed{--margin-top:0px;--margin-right:0px;--margin-bottom:0px;--margin-left:0px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}.elementor-11707 .elementor-element.elementor-element-3479f3ed.e-con{--align-self:center;}.elementor-11707 .elementor-element.elementor-element-f872797 > .elementor-widget-container{margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;}.elementor-11707 .elementor-element.elementor-element-f872797.elementor-element{--align-self:flex-start;--order:-99999 /* order start hack */;}#elementor-popup-modal-11707 .dialog-message{width:85vw;height:564px;}#elementor-popup-modal-11707{justify-content:center;align-items:center;}#elementor-popup-modal-11707 .dialog-widget-content{border-radius:8px 8px 8px 8px;}}@media(min-width:768px){.elementor-11707 .elementor-element.elementor-element-58b86da3{--width:100vw;}.elementor-11707 .elementor-element.elementor-element-3d1b644f{--width:100%;}}/* Start custom CSS for icon, class: .elementor-element-1835d294 */.elementor-11707 .elementor-element.elementor-element-1835d294 .elementor-icon {
+    border-color: #E3E1E2 !important;
+}/* End custom CSS */
+/* Start custom CSS for icon-list, class: .elementor-element-f872797 */.elementor-11707 .elementor-element.elementor-element-f872797 li.elementor-icon-list-item {
+    width: 100%;
+    height: 100%;
+    padding: 12px 24px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #2F3A5F;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 29px;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.elementor-11707 .elementor-element.elementor-element-f872797 li.elementor-icon-list-item.active {
+    background: rgba(26,195,218,0.1) !important;
+}
+
+.elementor-11707 .elementor-element.elementor-element-f872797 span.elementor-icon-list-text.active {
+    color: #1AC3DA !important;
+    font-weight: 600 !important;
+}
+
+/** cards filter **/
+.active-tool {
+    display: flex;
+}
+
+.inactive-tool {
+    display: none !important;
+}/* End custom CSS */
+/* Start custom CSS */#elementor-popup-modal-11707 ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+#elementor-popup-modal-11707 ::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+  border-radius: 8px;
+}
+#elementor-popup-modal-11707 ::-webkit-scrollbar-thumb {
+  background-color: #FB4247;
+  border-radius: 8px;
+}/* End custom CSS */
