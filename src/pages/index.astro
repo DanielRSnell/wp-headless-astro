@@ -1,19 +1,12 @@
 ---
 // Imports
-import Layout from "@layouts/boilerplate.astro";
-import Wrapper from "@/layouts/parts/astro_body.astro";
+export const prerender = true
+
+
+const router = await fetch('https://domartisan.com');
+
+const html = await router.text();
 
 ---
 
-<Layout title="Home" />
-
-<Wrapper classNames="flex flex-col w-ful justify-center items-stretch">
-  <section>
-    <div
-      class="flex flex-col w-full h-screen items-stretch justify-center text-center"
-    >
-      <h1 transition:name="page-header" class="text-7xl font-bold">Home</h1>
-      <p class="text-lg">This is some sample header content.</p>
-    </div>
-  </section>
-</Wrapper>
+<Fragment set:html={html} />
