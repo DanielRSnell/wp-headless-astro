@@ -4,28 +4,6 @@ export async function CleanMarkup(payload) {
   // Parse the HTML content with linkedom
   const { document } = parseHTML(payload);
 
-  // Function to determine if a URL is absolute and does not contain the PROP_NAME
-  function isNonRelativeAndExcludable(url) {
-    return (url.startsWith('http://') || url.startsWith('https://')) &&
-           !url.includes(import.meta.env.PROP_NAME);
-  }
-
-  // Iterate over all script and link elements and remove the non-relative ones that don't contain PROP_NAME
-  const scriptsAndLinks = document.querySelectorAll('script[src], link[href]');
-  scriptsAndLinks.forEach(el => {
-    // Remove 'script' tags with non-relative 'src' that don't contain PROP_NAME
-    if (el.tagName === 'SCRIPT' && el.hasAttribute('src') &&
-        isNonRelativeAndExcludable(el.getAttribute('src'))) {
-      el.parentNode.removeChild(el);
-    }
-
-    // Remove 'link' tags with non-relative 'href' that don't contain PROP_NAME (only for stylesheets)
-    if (el.tagName === 'LINK' && el.hasAttribute('href') &&
-        isNonRelativeAndExcludable(el.getAttribute('href')) && el.getAttribute('rel') === 'stylesheet') {
-      el.parentNode.removeChild(el);
-    }
-  });
-
   // Function to make a single URL relative and remove query strings
   function makeRelative(url) {
     let cleanUrl = url.startsWith(import.meta.env.CORE_URL) ? url.replace(import.meta.env.CORE_URL, '') : url;
@@ -43,23 +21,19 @@ export async function CleanMarkup(payload) {
       .join(', ');
   }
 
-  // Iterate over all elements with 'src', 'href', and 'srcset' attributes to make URLs relative
-  const elements = document.querySelectorAll('[src], [href], [srcset]');
+  // Iterate over all elements and modify the URLs
+  const elements = document.querySelectorAll('[src], [href], [srcset], script');
   elements.forEach(el => {
-    // Replace 'src' if it's not relative, doesn't contain PROP_NAME, and remove query strings
+    // Replace 'src' if it's not relative and remove query strings
     if (el.hasAttribute('src')) {
       const src = el.getAttribute('src');
-      if (!src.includes(import.meta.env.PROP_NAME)) {
-        el.setAttribute('src', makeRelative(src));
-      }
+      el.setAttribute('src', makeRelative(src));
     }
 
-    // Replace 'href' if it's not relative, doesn't contain PROP_NAME, and remove query strings
+    // Replace 'href' if it's not relative and remove query strings
     if (el.hasAttribute('href')) {
       const href = el.getAttribute('href');
-      if (!href.includes(import.meta.env.PROP_NAME)) {
-        el.setAttribute('href', makeRelative(href));
-      }
+      el.setAttribute('href', makeRelative(href));
     }
 
     // Replace 'srcset' if it's not relative and remove query strings
@@ -67,12 +41,13 @@ export async function CleanMarkup(payload) {
       const srcset = el.getAttribute('srcset');
       el.setAttribute('srcset', makeSrcsetRelative(srcset));
     }
+
+    // For 'script' elements, add type="text/partytown" if the source is not relative
+    if (el.tagName === 'SCRIPT' && el.hasAttribute('src') && !el.getAttribute('src').startsWith('/')) {
+      el.setAttribute('type', 'text/partytown');
+    }
   });
 
-  // Convert the document back to a string and remove any redundant query strings
-  return document.toString()
-    .replace(/([?&]\w+=\w+)+/g, ''); // Remove query parameters
+  // Convert the document back to a string
+  return document.toString().split(import.meta.env.CORE_URL).join('').replace(/([?&]\w+=\w+)+/g, '');
 }
-
-// Ensure that PROP_NAME is defined in the environment where this code runs.
-// import.meta.env.PROP_NAME should be replaced with the actual value if necessary.
