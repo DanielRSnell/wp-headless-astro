@@ -69,7 +69,7 @@ export async function CleanMarkup(payload) {
   });
 
   // Convert the document back to a string and remove any redundant query strings
-  return document.toString().replace(/([?&]\w+=\w+)+/g, '').split('https://bricksbuilder.io').join('');
+  return document.body.toString().replace(/([?&]\w+=\w+)+/g, '').split(import.meta.env.CORE_URL).join('');
 }
 
 // Ensure that this code runs in an environment where import.meta.env.CORE_URL is set.

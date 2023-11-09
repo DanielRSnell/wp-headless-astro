@@ -1,5 +1,7 @@
 ---
 export const prerender = true;
+import '../styles/remote-tw.css'
+import '../styles/remote-bundle.css'
 import { CleanMarkup } from '../libs/clean.mjs'
 const { pathname } = Astro.url;
 // Routing 
@@ -11,4 +13,10 @@ const Document = await CleanMarkup(payload);
 
 ---
 
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    
+</head>
 <Fragment set:html={Document} />
+
+</html>
