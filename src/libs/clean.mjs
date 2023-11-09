@@ -33,7 +33,7 @@ export async function CleanMarkup(payload) {
 
   // Remove any 'script' or 'link' tags that do not contain CORE_URL
   document.querySelectorAll('script[src], link[href][rel="stylesheet"]').forEach(el => {
-    if ((el.tagName === 'SCRIPT' || el.tagName === 'LINK') && !containsCoreUrl(el.getAttribute('src') || el.getAttribute('href'))) {
+    if ((el.tagName === 'SCRIPT' or el.tagName === 'LINK') && !containsCoreUrl(el.getAttribute('src') || el.getAttribute('href'))) {
       el.parentNode.removeChild(el);
     }
   });
@@ -41,35 +41,28 @@ export async function CleanMarkup(payload) {
   // Iterate over remaining elements and modify the URLs
   const elements = document.querySelectorAll('[src], [href], [srcset]');
   elements.forEach(el => {
-    // Replace 'src' if it contains CORE_URL and remove query strings
     if (el.hasAttribute('src') && containsCoreUrl(el.getAttribute('src'))) {
-      const src = el.getAttribute('src');
-      el.setAttribute('src', makeRelative(src));
+      el.setAttribute('src', makeRelative(el.getAttribute('src')));
     }
-
-    // Replace 'href' if it contains CORE_URL and remove query strings
     if (el.hasAttribute('href') && containsCoreUrl(el.getAttribute('href'))) {
-      const href = el.getAttribute('href');
-      el.setAttribute('href', makeRelative(href));
+      el.setAttribute('href', makeRelative(el.getAttribute('href')));
     }
-
-    // Replace 'srcset' if it contains CORE_URL and remove query strings
     if (el.hasAttribute('srcset')) {
-      const srcset = el.getAttribute('srcset');
-      el.setAttribute('srcset', makeSrcsetRelative(srcset));
+      el.setAttribute('srcset', makeSrcsetRelative(el.getAttribute('srcset')));
     }
   });
 
-  // After processing the elements, set type="text/partytown" for all absolute script tags
-  const scriptTags = document.querySelectorAll('script[src]');
+  // Set type="text/partytown" for all absolute script tags and add defer to all script tags in the body
+  const scriptTags = document.body.querySelectorAll('script');
   scriptTags.forEach(script => {
-    if (isAbsolute(script.getAttribute('src'))) {
-      script.setAttribute('type', 'text/partytown');
+    if (script.hasAttribute('src')) {
+      if (isAbsolute(script.getAttribute('src'))) {
+        script.setAttribute('type', 'text/partytown');
+      }
+      script.setAttribute('defer', '');
     }
   });
 
   // Convert the document back to a string and remove any redundant query strings
   return document.body.toString().replace(/([?&]\w+=\w+)+/g, '').split(import.meta.env.CORE_URL).join('');
 }
-
-// Ensure that this code runs in an environment where import.meta.env.CORE_URL is set.
