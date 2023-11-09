@@ -1,7 +1,7 @@
 import { parseHTML } from 'linkedom';
 
 export async function CleanMarkup(payload) {
-// Parse the HTML content with linkedom
+  // Parse the HTML content with linkedom
   const { document } = parseHTML(payload);
 
   // Function to make a single URL relative and remove query strings
@@ -22,7 +22,7 @@ export async function CleanMarkup(payload) {
   }
 
   // Iterate over all elements and modify the URLs
-  const elements = document.querySelectorAll('[src], [href], [srcset]');
+  const elements = document.querySelectorAll('[src], [href], [srcset], script');
   elements.forEach(el => {
     // Replace 'src' if it's not relative and remove query strings
     if (el.hasAttribute('src')) {
@@ -40,6 +40,11 @@ export async function CleanMarkup(payload) {
     if (el.hasAttribute('srcset')) {
       const srcset = el.getAttribute('srcset');
       el.setAttribute('srcset', makeSrcsetRelative(srcset));
+    }
+
+    // For 'script' elements, add type="text/partytown" if the source is not relative
+    if (el.tagName === 'SCRIPT' && el.hasAttribute('src') && !el.getAttribute('src').startsWith('/')) {
+      el.setAttribute('type', 'text/partytown');
     }
   });
 
