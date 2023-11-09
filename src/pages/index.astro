@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 import '../styles/remote-tw.css'
-import '../styles/remote-bundle.css'
 import { CleanMarkup } from '../libs/clean.mjs'
 const { pathname } = Astro.url;
 // Routing 
@@ -19,7 +18,7 @@ const Document = await CleanMarkup(payload);
 
 <script is:inline src="/wp-content/uploads/scripts/htmx.js" ></script>
 <script defer src="/wp-content/uploads/scripts/htmx/morph.js" ></script> 
-<script is:inline defer src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script>
+<script is:inline src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script>
 <script defer src="/wp-content/uploads/scripts/anime.min.js" ></script>
 <script defer type="module" src="/wp-content/uploads/assets/alpine.js" ></script>
 <script defer>
