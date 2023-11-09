@@ -11,4 +11,4 @@ const Document = await CleanMarkup(payload);
 
 ---
 
-<Fragment set:html={Document} />
+<Fragment set:html={Document.split('https://domartisan.com').join('')} />
