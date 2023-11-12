@@ -31,16 +31,17 @@ export async function CleanMarkup(payload) {
       .join(', ');
   }
 
-  // Remove any 'script' or 'link' tags that do not contain CORE_URL
-  document.querySelectorAll('script[src], link[href][rel="stylesheet"]').forEach(el => {
-    const url = el.getAttribute('src') || el.getAttribute('href');
-    if (!containsCoreUrl(url)) {
-      el.parentNode.removeChild(el);
-    }
-  });
+  // Target the main content of the document
+  const mainContent = document.querySelector('main');
+  if (!mainContent) {
+    // Handle cases where there is no main tag
+    console.error('No main content found in the document.');
+    return;
+  }
 
-  // Iterate over remaining elements and modify the URLs
-  const elements = document.querySelectorAll('[src], [href], [srcset]');
+  // Process the main content as needed
+  // For example, modify URLs in the main content
+  const elements = mainContent.querySelectorAll('[src], [href], [srcset]');
   elements.forEach(el => {
     if (el.hasAttribute('src') && containsCoreUrl(el.getAttribute('src'))) {
       el.setAttribute('src', makeRelative(el.getAttribute('src')));
@@ -53,15 +54,17 @@ export async function CleanMarkup(payload) {
     }
   });
 
-  // Set type="text/partytown" for all absolute script tags and add defer to all script tags in the body
-  const scriptTags = document.body.querySelectorAll('script');
-  scriptTags.forEach(script => {
-    if (script.hasAttribute('src') && isAbsolute(script.getAttribute('src'))) {
-      script.setAttribute('type', 'text/partytown');
+  // Remove any 'script' or 'link' tags that do not contain CORE_URL from the main content
+  mainContent.querySelectorAll('script[src], link[href][rel="stylesheet"]').forEach(el => {
+    const url = el.getAttribute('src') || el.getAttribute('href');
+    if (!containsCoreUrl(url)) {
+      el.parentNode.removeChild(el);
     }
-    script.setAttribute('defer', '');
   });
 
-  // Convert the document back to a string and remove any redundant query strings
-  return document.documentElement.outerHTML.replace(/([?&]\w+=\w+)+/g, '').split(import.meta.env.CORE_URL).join('');
+  // Convert the main content back to a string
+  return mainContent.outerHTML;
 }
+
+// Note: This function now focuses only on the <main> element of the HTML document.
+// Adjust the querySelector as needed to target different parts of the document.
