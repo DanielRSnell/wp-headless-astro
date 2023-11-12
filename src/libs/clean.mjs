@@ -33,7 +33,8 @@ export async function CleanMarkup(payload) {
 
   // Remove any 'script' or 'link' tags that do not contain CORE_URL
   document.querySelectorAll('script[src], link[href][rel="stylesheet"]').forEach(el => {
-    if ((el.tagName === 'SCRIPT' or el.tagName === 'LINK') && !containsCoreUrl(el.getAttribute('src') || el.getAttribute('href'))) {
+    const url = el.getAttribute('src') || el.getAttribute('href');
+    if (!containsCoreUrl(url)) {
       el.parentNode.removeChild(el);
     }
   });
@@ -55,14 +56,12 @@ export async function CleanMarkup(payload) {
   // Set type="text/partytown" for all absolute script tags and add defer to all script tags in the body
   const scriptTags = document.body.querySelectorAll('script');
   scriptTags.forEach(script => {
-    if (script.hasAttribute('src')) {
-      if (isAbsolute(script.getAttribute('src'))) {
-        script.setAttribute('type', 'text/partytown');
-      }
-      script.setAttribute('defer', '');
+    if (script.hasAttribute('src') && isAbsolute(script.getAttribute('src'))) {
+      script.setAttribute('type', 'text/partytown');
     }
+    script.setAttribute('defer', '');
   });
 
   // Convert the document back to a string and remove any redundant query strings
-  return document.body.toString().replace(/([?&]\w+=\w+)+/g, '').split(import.meta.env.CORE_URL).join('');
+  return document.documentElement.outerHTML.replace(/([?&]\w+=\w+)+/g, '').split(import.meta.env.CORE_URL).join('');
 }
