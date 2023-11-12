@@ -16,15 +16,16 @@ const Document = await CleanMarkup(payload);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- <script is:inline src="/wp-content/uploads/scripts/htmx.js" ></script>
+<!-- <script  src="/wp-content/uploads/scripts/htmx.js" ></script>
 <script defer src="/wp-content/uploads/scripts/htmx/morph.js" ></script> 
-<script is:inline src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script>
-<script defer src="/wp-content/uploads/scripts/anime.min.js" ></script>
+<script  src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script> -->
+<script  src="/wp-content/uploads/scripts/htmx.js" ></script>
+<!-- <script  src="/wp-content/uploads/scripts/anime.min.js" ></script> -->
 <script defer type="module" src="/wp-content/uploads/assets/alpine.js" ></script>
 <script defer>
 
     htmx.config.globalViewTransitions = true;
-</script> -->
+</script>
 </head>
 <Fragment set:html={Document} />
 <script type="text/partytown" defer>
