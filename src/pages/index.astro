@@ -6,7 +6,7 @@ const { pathname } = Astro.url;
 // Routing 
 const route = await fetch(import.meta.env.CORE_URL + pathname);
 const payload = await route.text()
-const Document = payload.split('https://domartisan.com').join('');
+const Document = payload.split('https://cdn.prod.website-files.com').join('');
 
 
 
