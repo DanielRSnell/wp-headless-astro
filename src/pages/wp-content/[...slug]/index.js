@@ -18,7 +18,7 @@ export async function GET({ params, request }) {
       statusText: response.statusText,
       headers: {
         'content-type': contentType,
-        'cache-control': 'public, max-age=3200',
+       'Cache-Control': 's-maxage=604800'
       },
     });
 
